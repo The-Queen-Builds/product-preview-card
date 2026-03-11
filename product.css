@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /*colors*/
+  --BODY-BG: hsl(30, 38%, 92%);
+  --CARD-BG: hsl(0, 0%, 100%);
+  --P-COLOR: hsl(228, 12%, 48%);
+  --BLACK: hsl(212, 21%, 14%);
+  --BRIGHT-GREEN: hsl(158, 36%, 37%);
+  --DARK-GREEN: hsl(158, 42%, 18%);
+  /*font-family*/
+  --curly: "Fraunces";
+  --straight: "Montserrat";
+}
+
+.container {
+  height: 100vh;
+  background-color: var(--BODY-BG);
+  padding: 1rem 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+img {
+  /* an image must as well be responsive */
+  /* using max-inline-size is a logical solution than max-width*/
+  max-inline-size: 100%;
+  block-size: auto; /*to preserve the resized image's aspect ratio*/
+  border-radius: 8px 8px 0 0;
+  height: 100%; /* to make sure that the image fills the whole height of its parent container*/
+}
+
+.product-card {
+  height: 600px;
+  display: grid;
+  grid-template-rows: 300px 1fr;
+  background-color: var(--CARD-BG);
+  border-radius: 8px;
+}
+
+.product-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.product-type {
+  text-transform: uppercase;
+  color: var(--P-COLOR);
+  letter-spacing: 0.3rem;
+  font-family: var(--straight), sans-serif;
+}
+
+.product-info h1 {
+  font-family: var(--curly), sans-serif;
+  line-height: 1;
+  color: var(--BLACK);
+}
+
+.product-details {
+  color: var(--P-COLOR);
+  font-family: var(--straight), sans-serif;
+}
+
+.product-info a {
+  text-decoration: none;
+  font-family: var(--straight), sans-serif;
+}
+
+.price-details {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.current-price {
+  font-size: 40px;
+  color: var(--BRIGHT-GREEN);
+  font-family: var(--curly), sans-serif;
+  font-weight: 700;
+}
+
+.old-price {
+  font-family: var(--straight), sans-serif;
+  /* text-decoration: line-through; */
+}
+
+.add-to-cart {
+  background-color: var(--BRIGHT-GREEN);
+  color: var(--CARD-BG);
+  text-align: center;
+  padding: 12px;
+  font-weight: bolder;
+  border-radius: 8px;
+  letter-spacing: 0.1rem;
+}
+
+.add-to-cart::before {
+  content: url(./images/icon-cart.svg);
+  padding: 0.5rem;
+}
+
+.add-to-cart:focus,
+.add-to-cart:hover,
+.add-to-cart:active {
+  background-color: var(--DARK-GREEN);
+}
+
+.attribution {
+  position: fixed;
+  bottom: 0;
+}
+
+.attribution a {
+  text-decoration: none;
+  color: var(--P-COLOR);
+}
+
+/* using relative units for media queries*/
+@media (min-width: 30rem) {
+  .container {
+    padding: 1rem 2.5rem;
+  }
+
+  .product-card {
+    display: grid;
+    grid-template-rows: 300px 1fr;
+    height: 600px;
+  }
+
+  .product-info {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+}
+
+@media (min-width: 37.5rem) {
+  .container {
+    padding: 1rem 4rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  .container {
+    border: 2px solid blue;
+    align-items: center;
+    width: 100vw;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  }
+
+  .product-card {
+    max-width: 700px;
+    width: 100%;
+    height: fit-content; /* for every problem there's always a fantastic solution */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content;
+  }
+
+  img {
+    border-radius: 8px 0 0 8px;
+  }
+
+  .product-info {
+    padding: 2.5rem;
+    gap: 1rem;
+  }
+
+  .product-info h1 {
+    font-size: 2.5rem;
+  }
+
+  .product-type {
+    letter-spacing: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-info p {
+    line-height: 1.8;
+  }
+}
